@@ -1,0 +1,71 @@
+<div class="container">
+  <br />
+  <form [formGroup]="expenseForm">
+    <mat-card>
+      <button type="button" class="btn btn-secondary btn-md center" disabled>
+        edit expense
+      </button>
+      <br />
+      <br />
+      <input
+        class="form-control"
+        type="text"
+        name="name"
+        placeholder="name"
+        formControlName="name"
+      />
+      <div *ngIf="expenseForm.get('name').invalid" style="color: red">
+        required
+      </div>
+      <br />
+      <input
+        class="form-control"
+        type="number"
+        name="amount"
+        placeholder="amount"
+        formControlName="amount"
+      />
+      <div *ngIf="expenseForm.get('amount').invalid" style="color: red">
+        required
+      </div>
+      <br />
+      <select class="form-control" name="type" formControlName="type">
+        <option value="" disabled selected>select expense type</option>
+        <option value="cash">cash</option>
+        <option value="credit card">credit card</option>
+        <option value="upi">upi</option>
+      </select>
+
+      <div *ngIf="expenseForm.get('type').invalid" style="color: red">
+        required
+      </div>
+      <br />
+      <input
+        class="form-control"
+        type="date"
+        name="date"
+        placeholder="date"
+        formControlName="date"
+      />
+      <div *ngIf="expenseForm.get('date').invalid" style="color: red">
+        required
+      </div>
+      <br />
+
+      <input
+        class="form-control"
+        type="text"
+        name="purpose"
+        placeholder="purpose"
+        formControlName="purpose"
+      />
+      <div *ngIf="expenseForm.get('purpose').invalid" style="color: red">
+        required
+      </div>
+      <br />
+      <button type="button" class="btn btn-warning" (click)="updateExpense()">
+        update expense
+      </button>
+    </mat-card>
+  </form>
+</div>

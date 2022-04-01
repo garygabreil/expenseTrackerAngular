@@ -1,0 +1,102 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Expense tracker app</a>
+    </div>
+  </nav>
+</div>
+<br />
+
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <form [formGroup]="expenseForm">
+        <mat-card>
+          <button
+            type="button"
+            class="btn btn-secondary btn-md center"
+            disabled
+          >
+            Expense
+          </button>
+          <br />
+          <br />
+          <input
+            class="form-control"
+            type="text"
+            name="name"
+            placeholder="name"
+            formControlName="name"
+          />
+          <div *ngIf="expenseForm.get('name').invalid" style="color: red">
+            required
+          </div>
+          <br />
+          <input
+            class="form-control"
+            type="number"
+            name="amount"
+            placeholder="amount"
+            formControlName="amount"
+          />
+          <div *ngIf="expenseForm.get('amount').invalid" style="color: red">
+            required
+          </div>
+          <br />
+          <select class="form-control" name="type" formControlName="type">
+            <option value="" disabled selected>select expense type</option>
+            <option value="cash">cash</option>
+            <option value="credit card">credit card</option>
+            <option value="upi">upi</option>
+          </select>
+
+          <div *ngIf="expenseForm.get('type').invalid" style="color: red">
+            required
+          </div>
+          <br />
+          <input
+            class="form-control"
+            type="date"
+            name="date"
+            placeholder="date"
+            formControlName="date"
+          />
+          <div *ngIf="expenseForm.get('date').invalid" style="color: red">
+            required
+          </div>
+          <br />
+
+          <input
+            class="form-control"
+            type="text"
+            name="purpose"
+            placeholder="purpose"
+            formControlName="purpose"
+          />
+          <div *ngIf="expenseForm.get('purpose').invalid" style="color: red">
+            required
+          </div>
+          <br />
+          <button type="button" class="btn btn-warning" (click)="addExpense()">
+            add expense
+          </button>
+        </mat-card>
+      </form>
+    </div>
+    <div class="col-9">
+      <!-- list all the expense -->
+
+      <mat-card>
+        <button type="button" class="btn btn-warning" disabled>
+          List of Expenses
+        </button>
+        <br />
+        <br />
+        <app-list-expenses-page></app-list-expenses-page>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<!-- Create, Read -->
+<!-- update, delete -->

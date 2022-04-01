@@ -1,0 +1,35 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>date</th>
+      <th>amount</th>
+      <th>type</th>
+      <th>purpose</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let expense of expenseList; let i = index">
+    <tr>
+      <td>{{ i + 1 }}</td>
+      <td>{{ expense[0].name }}</td>
+      <td>{{ expense[0].date | date: "dd-MM-YYYY" }}</td>
+      <td>{{ expense[0].amount | currency: "INR" }}</td>
+      <td>{{ expense[0].type | uppercase }}</td>
+      <td>{{ expense[0].purpose }}</td>
+      <td>
+        <button
+          class="btn btn-success"
+          [routerLink]="['/edit-expense', expense[1]]"
+        >
+          edit
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="deleteExpenseById(expense[1])">
+          delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
